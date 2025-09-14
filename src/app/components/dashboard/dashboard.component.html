@@ -1,0 +1,105 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport mode="side" opened>
+    <mat-toolbar color="primary" class="sidenav-header">
+      <span class="brand" style="width: 100%; display: flex; align-items: center;">
+        <mat-icon class="bank-icon" style="color: #1976d2;">account_balance</mat-icon>
+        <span class="brand-name" style="margin-left: 10px;">
+          MCABank
+        </span>
+      </span>
+    </mat-toolbar>
+    
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active"
+         style="font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; font-weight: 300; font-size: 20px; color: #333;">
+        <mat-icon>dashboard</mat-icon>
+        <span style="font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; font-weight: 300; font-size: 20px; color: #333;">
+          Dashboard
+        </span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      
+      <button mat-button [matMenuTriggerFor]="userMenu">
+        <mat-icon class="avatar-icon" style="color: #1976d2;">account_circle</mat-icon>
+        <span style="font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; font-weight: 400; font-size: 14px;">
+          {{ currentUser?.nome }}
+        </span>
+      </button>
+      
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Sair</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <div class="content">
+      <div class="dashboard-header">
+        <h1>Dashboard</h1>
+        <p>Bem-vindo ao sistema bancário MCABank</p>
+      </div>
+
+      <div class="stats-grid">
+        <mat-card class="stat-card">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon clients-icon">
+                <mat-icon>people</mat-icon>
+              </div>
+              <div class="stat-info">
+                <h3>{{ totalClients }}</h3>
+                <p>Total de Clientes</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon balance-icon">
+                <mat-icon>account_balance_wallet</mat-icon>
+              </div>
+              <div class="stat-info">
+                <h3>{{ totalBalance | currency:'BRL':'symbol':'1.2-2' }}</h3>
+                <p>Saldo Total</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-content>
+            <div class="stat-content">
+              <div class="stat-icon active-icon">
+                <mat-icon>trending_up</mat-icon>
+              </div>
+              <div class="stat-info">
+                <h3>{{ activeClients }}</h3>
+                <p>Clientes Ativos</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="recent-clients">
+        <app-client-list
+          [showClientDetails]="showClientDetails"
+          [editClient]="editClient"
+          [deleteClientHandler]="deleteClientHandler"
+          [createClient]="createClient"
+        ></app-client-list>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

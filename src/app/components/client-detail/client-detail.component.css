@@ -1,0 +1,388 @@
+.client-detail-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px 0;
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.client-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.client-avatar mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.client-details h2 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+
+.client-details p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  min-height: 600px;
+  max-height: 700px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  /* Prevent width change on tab switch */
+  flex: 1 1 0;
+}
+
+.mat-tab-group, .mat-tab-body-wrapper, .mat-tab-body {
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+}
+
+.mat-tab-body {
+  flex: 1 1 0;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-content {
+  padding: 24px;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row label {
+  font-weight: 500;
+  color: #666;
+  width: 150px;
+}
+
+.info-row span {
+  color: #333;
+  text-align: right;
+}
+
+.balance-card {
+  min-width: 300px;
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+  color: white;
+}
+
+.balance-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.balance-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.balance-details h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.balance-amount {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.operations-tab-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.operations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  height: 100%;
+  align-items: stretch;
+}
+
+.deposit-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.deposit-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  height: 100%;
+  min-height: 0;
+}
+
+.deposit-form-spacer {
+  flex: 1 1 auto;
+  min-height: 16px;
+}
+
+.deposit-btn {
+  margin-top: 16px;
+  align-self: stretch;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background-color: #e8f5e8;
+  color: #4caf50;
+}
+
+.transaction-item {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 16px 0;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+mat-list-item {
+  height: auto !important;
+  padding: 0 !important;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.transaction-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.transaction-icon.deposit {
+  background-color: #e8f5e8;
+  color: #4caf50;
+}
+
+.transaction-icon.withdraw {
+  background-color: #ffebee;
+  color: #f44336;
+}
+
+.transaction-info {
+  flex: 1;
+}
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.transaction-type {
+  font-weight: 500;
+  color: #333;
+}
+
+.transaction-amount {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.transaction-amount.positive {
+  color: #4caf50;
+}
+
+.transaction-amount.negative {
+  color: #f44336;
+}
+
+.transaction-details {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.transaction-date, .transaction-description {
+  font-size: 14px;
+  color: #666;
+}
+
+.balance-change {
+  font-size: 12px;
+  color: #999;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.empty-state mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: #ddd;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px 0;
+  color: #666;
+  font-weight: 400;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #999;
+}
+
+.balance-info-small {
+  margin: 8px 0 16px 0;
+  padding: 8px 0 24px 24px; /* Added padding-bottom for spacing */
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.balance-info-centered {
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.balance-amount-available {
+  font-size: 18px;
+  font-weight: 600;
+  color: #388e3c;
+  margin-left: 4px;
+}
+
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 20px !important;
+  color: #333 !important;
+}
+
+.mat-mdc-card-title {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
+}
+
+::ng-deep .mdc-text-field--outlined .mdc-floating-label {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
+}
+
+::ng-deep .mat-mdc-form-field-error {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
+}
+
+::ng-deep mat-form-field span {
+  margin-left: 10px;
+}
+
+::ng-deep .mat-mdc-card-header {
+  margin-bottom: 16px;
+}
+
+::ng-deep .mdc-button {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
+}
+
+::ng-deep .mat-mdc-form-field-infix {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
+}
