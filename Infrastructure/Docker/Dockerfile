@@ -6,13 +6,14 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
-
 RUN npm run build -- --configuration production
 
 FROM nginx:alpine
 
-COPY --from=build /app/dist/mcabank-frontend /usr/share/nginx/html
+RUN mkdir -p /usr/share/nginx/html
+COPY --from=build /app/dist/mcabank-frontend/browser/ /usr/share/nginx/html/
 
+# Replace default Nginx config
 RUN rm /etc/nginx/conf.d/default.conf
 COPY ./Infrastructure/Docker/nginx.conf /etc/nginx/conf.d/default.conf
 
