@@ -5,7 +5,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "mcabank-frontend": {
+    "demo": {
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -28,7 +28,7 @@
           "options": {
             "assets": [],
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "outputPath": "dist/mcabank-frontend",
             "polyfills": ["zone.js"],
             "scripts": [],
@@ -40,10 +40,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "development": {
-              "buildTarget": "mcabank-frontend:build:development"
+              "buildTarget": "demo:build:development"
             },
             "production": {
-              "buildTarget": "mcabank-frontend:build:production"
+              "buildTarget": "demo:build:production"
             }
           },
           "defaultConfiguration": "development"
