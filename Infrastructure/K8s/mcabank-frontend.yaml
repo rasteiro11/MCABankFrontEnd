@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mcabank-frontend
-          image: rasteiro11/mcabank-frontend:20250914201204
+          image: rasteiro11/mcabank-frontend:20250916225954
           ports:
             - containerPort: 80
 ---
