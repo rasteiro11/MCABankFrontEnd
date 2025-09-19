@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
@@ -33,9 +33,8 @@ import { Subject } from 'rxjs';
   styleUrl: './client-list.component.css',
 })
 export class ClientListComponent implements OnInit {
-  private reloadSubject = new Subject<void>();
-  reload$ = this.reloadSubject.asObservable();
 
+  @Output() reloadDashboardRequested = new EventEmitter<void>();
   allClients: Client[] = []; 
   clients: Client[] = [];    
   displayedColumns: string[] = ['id', 'nome', 'saldo', 'status', 'actions'];
@@ -63,12 +62,10 @@ export class ClientListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadClients()
-    this.reload$.subscribe(() => {
-      this.loadClients();
-    });
   }
 
   loadClients(): void {
+    this.reloadDashboardRequested.emit()
     this.loadingClients = true;
     this.clientService.getAllClients().subscribe({
       next: (clients) => {
@@ -94,9 +91,5 @@ export class ClientListComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.updatePage();
-  }
-
-  triggerReload(): void {
-    this.reloadSubject.next();
   }
 }

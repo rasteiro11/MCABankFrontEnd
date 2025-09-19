@@ -98,6 +98,7 @@
           [editClient]="editClient"
           [deleteClientHandler]="deleteClientHandler"
           [createClient]="createClient"
+          (reloadDashboardRequested)="onReloadDashboardRequested($event)"
         ></app-client-list>
       </div>
     </div>

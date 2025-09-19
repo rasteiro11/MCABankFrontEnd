@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ClientService } from '../../services/client.service';
@@ -43,7 +43,6 @@ export class DashboardComponent implements OnInit {
   totalClients = 0;
   totalBalance = 0;
   activeClients = 0;
-  recentClients: Client[] = [];
   reloadClientListCounter = 0;
 
   @ViewChild(ClientListComponent) clientListComponent!: ClientListComponent;
@@ -68,9 +67,6 @@ export class DashboardComponent implements OnInit {
       this.totalClients = clients.length;
       this.totalBalance = clients.reduce((sum, client) => sum + client.saldo, 0);
       this.activeClients = clients.filter(client => client.ativo).length;
-      this.recentClients = clients
-        .sort((a, b) => new Date(b.dataCadastro!).getTime() - new Date(a.dataCadastro!).getTime())
-        .slice(0, 5);
     });
   }
 
@@ -135,9 +131,10 @@ export class DashboardComponent implements OnInit {
 
   refreshDashboard() {
       console.log('Refreshing dashboard data...');
-      if (this.clientListComponent) {
-        this.clientListComponent.triggerReload();
-      }
       this.loadDashboardData();
+  }
+
+  onReloadDashboardRequested(event: any) {
+    this.refreshDashboard()
   }
 }
