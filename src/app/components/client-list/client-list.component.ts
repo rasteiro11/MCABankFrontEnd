@@ -66,6 +66,10 @@ export class ClientListComponent implements OnInit {
 
   loadClients(): void {
     this.reloadDashboardRequested.emit()
+    this.updateClientsList()
+  }
+
+  updateClientsList(): void {
     this.loadingClients = true;
     this.clientService.getAllClients().subscribe({
       next: (clients) => {
@@ -92,4 +96,5 @@ export class ClientListComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.updatePage();
   }
+
 }

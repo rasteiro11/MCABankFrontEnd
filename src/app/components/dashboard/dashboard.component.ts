@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
     this.clientService.getAllClients().subscribe(clients => {
       this.totalClients = clients.length;
       this.totalBalance = clients.reduce((sum, client) => sum + client.saldo, 0);
-      this.activeClients = clients.filter(client => client.ativo).length;
+      this.activeClients = clients.length;
     });
   }
 
@@ -132,6 +132,9 @@ export class DashboardComponent implements OnInit {
   refreshDashboard() {
       console.log('Refreshing dashboard data...');
       this.loadDashboardData();
+      if(this.clientListComponent) {
+        this.clientListComponent.updateClientsList()
+      }
   }
 
   onReloadDashboardRequested(event: any) {
